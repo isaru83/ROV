@@ -55,9 +55,6 @@ bool SubMarine::isRunning() const
     return _running;
 }
 
-// ────────────────────────────────────────────────
-// Privé
-// ────────────────────────────────────────────────
 void SubMarine::processIncomingCommands()
 {
     if (!_serial.available()) return;

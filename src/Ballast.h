@@ -37,7 +37,6 @@ private:
     double _pidOutput   = 0.0;             
 
     PID    _pid;
-
     // Gestion non-bloquante de la pompe
     bool     _pumpActive     = false;
     bool     _pumpFilling    = false;       // true = remplir, false = vider

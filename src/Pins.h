@@ -38,13 +38,13 @@
 // =============================================================================
 #define PIN_DRV_IN1     PA0
 #define PIN_DRV_IN2     PA1
-// Optionnel : PIN_DRV_SLEEP   (si tu veux pouvoir couper le driver)
+// Optionnel : PIN_DRV_SLEEP  
 
 // =============================================================================
 // Autres (exemples)
 // =============================================================================
 #define PIN_LED_DEBUG   PC13    // LED intégrée Black Pill
-#define PIN_ADC_VBAT    PA1     // Pour mesurer la tension batterie
+#define PIN_ADC_VBAT    PA1     
 
 // =============================================================================
 // Constantes utiles

@@ -14,11 +14,11 @@ public:
     ESC(uint8_t pin, uint16_t minUs = 1000, uint16_t maxUs = 2000, uint16_t neutralUs = 1500);
     ~ESC();
 
-    bool begin();                     // attache le PWM
-    void write(uint16_t us);          // valeur en µs (1000..2000)
-    void writePercent(float percent); // -100% .. +100%
-    void arm();                       // met à neutral puis attend un peu
-    void disarm();                    // met à 0 ou min
+    bool begin();                     
+    void write(uint16_t us);          
+    void writePercent(float percent); 
+    void arm();                       
+    void disarm();                    
 
 private:
     uint8_t _pin;

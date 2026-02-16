@@ -1,4 +1,3 @@
-// ESC.cpp
 #include "ESC.h"
 
 HardwareTimer* ESC::timer = nullptr;
@@ -18,7 +17,7 @@ ESC::ESC(uint8_t pin, uint16_t minUs, uint16_t maxUs, uint16_t neutralUs)
     if (nextChannel <= 4) 
         _channel = nextChannel++;
     else 
-        _channel = 0; // erreur
+        _channel = 0; 
 }
 
 ESC::~ESC() 
@@ -49,9 +48,9 @@ void ESC::writePercent(float percent)
 
 void ESC::arm() 
 {
-    write(_minUs);   // souvent 1000
+    write(_minUs);   
     delay(1000);
-    write(_maxUs);   // souvent 2000
+    write(_maxUs);   
     delay(1000); 
     write(_neutralUs);
     delay(2000);    

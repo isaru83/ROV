@@ -1,16 +1,16 @@
 #include "SerialManager.h"
 #include "Pins.h"
-#include <cstring>   // pour memcpy
+#include <cstring>  
 
 SerialManager::SerialManager(HardwareSerial *serial)
     : _serial(serial)
 {
-    // Initialisation si besoin (baudrate déjà fait dans setup)
+    
 }
 
 SerialManager::~SerialManager()
 {
-    // Rien de spécial
+
 }
 
 void SerialManager::update()
@@ -39,7 +39,7 @@ void SerialManager::update()
             uint8_t id   = rxBuffer[(rxTail + 2) % sizeof(rxBuffer)];
             uint8_t len  = rxBuffer[(rxTail + 3) % sizeof(rxBuffer)];
 
-            // Vérifie longueur cohérente
+            // Vérifie longueur
             if (len > REQ_MAX_SIZE || len == 0) {
                 rxTail = (rxTail + 1) % sizeof(rxBuffer);
                 continue;
@@ -88,7 +88,7 @@ uint8_t SerialManager::getFrame(uint8_t *type, uint8_t *id, uint8_t *data)
     *type = lastType;
     *id   = lastId;
     memcpy(data, lastData, lastLen);
-    frameReady = false;  // consommé
+    frameReady = false;  
 
     return lastLen;
 }
@@ -98,7 +98,7 @@ void SerialManager::sendFrame(uint8_t type, const uint8_t *data, uint8_t len)
     uint8_t buf[5 + len + 2];
     buf[0] = START_BYTE;
     buf[1] = type;
-    buf[2] = 0; // ID, on peut incrémenter si besoin
+    buf[2] = 0;
     buf[3] = len;
     memcpy(&buf[4], data, len);
 
@@ -113,7 +113,6 @@ void SerialManager::sendFrame(uint8_t type, const uint8_t *data, uint8_t len)
     digitalWrite(PIN_RS485_DE, LOW);
 }
 
-// Exemple CRC16-CCITT (très courant)
 uint16_t SerialManager::calculateCRC(const uint8_t *buf, uint16_t len) const
 {
     uint16_t crc = 0xFFFF;

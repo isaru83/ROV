@@ -37,11 +37,11 @@ void Ballast::update(float currentDepth)
         if (now - _pumpStartTime >= _pumpDuration)
             stopPump();
 
-    // Cooldown entre deux impulsions
+    // Cooldown entre deux commande
     if (!_pumpActive && (now - _lastPumpAction < PUMP_COOLDOWN_MS))
         return;
 
-    // Décision d'action seulement si pas en cooldown et pas en impulsion
+    // Pas en cooldown et pas en commandé
     if (!_pumpActive && (now - _lastPumpAction >= PUMP_COOLDOWN_MS))
     {
         if (_pidOutput > 50.0)
