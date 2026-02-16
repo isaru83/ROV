@@ -1,15 +1,15 @@
 # SubMarin - ROV d'exploration
 
-Projet personnel de **ROV** (Remotely Operated Vehicle) compact conçu pour l'observation sous-marine lente, la prise de vue et l'exploration de zones restreintes (rochers, épaves, algues, grottes…).
+Projet personnel de **ROV** (Remotely Operated Vehicle) compact conçu pour l'observation sous-marine.
 
 L'objectif est d'obtenir un engin **très maniable**, **lent** (0.1–0.8 m/s), stable et silencieux, plutôt qu'un ROV de course.
 
 ## Caractéristiques principales
 
 - **Profondeur max cible** : 10 mètres (boîtier étanche PETG 3D imprimé + plexiglas vissé)
-- **Configuration moteurs** : 4 × ESC 2212 920KV en + (hélices maison Ø60 mm dans tunnels de poussée)
-- **Asservissement** : PID sur pitch, yaw + asservissement profondeur par ballast central
-- **Ballast** : pompe péristaltique + brassard gonflable interne
+- **Configuration moteurs** : 4 × ESC 2212 920KV en + hélices maison Ø60 mm dans tunnels de poussée
+- **Asservissement** : PID sur pitch, yaw + asservissement profondeur par ballast central (Pas de                          contole sur le roll)
+- **Ballast** : pompe péristaltique + poche d'eau interne
 - **Capteurs** : IMU BNO08x, pression MS5837, futur capteur Hall sur pompe
 - **Communication** : RS485 demi-duplex (MAX485) avec protocole binaire simple
 - **Contrôle** : station PC/joystick avec commandes throttle, profondeur, assiette
@@ -27,7 +27,7 @@ L'objectif est d'obtenir un engin **très maniable**, **lent** (0.1–0.8 m/s), 
 - MAX485 pour RS485
 - Boîtier étanche PETG 3D imprimé (170×120×95 mm)
 - Plexiglas vissé pour couvercle
-- Hélices maison Ø60 mm (3 pales, profil S léger)
+- Hélices maison Ø60 mm 3 pales
 
 ## Fonctionnalités implémentées
 
