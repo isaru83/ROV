@@ -12,5 +12,4 @@
 #define ERR_PRESS_SENSOR      8   
 #define ERR_ESC_INIT          9
 
-
 #endif // TIMER_H_INCLUDED

@@ -8,9 +8,9 @@
 #define PUMP_FILL_PIN        PIN_DRV_IN1
 #define PUMP_EMPTY_PIN       PIN_DRV_IN2
 
-#define PUMP_MIN_DURATION_MS   500     // durée minimale d'impulsion
-#define PUMP_MAX_DURATION_MS   5000    // sécurité anti-boucle infinie
-#define PUMP_COOLDOWN_MS       8000    // temps minimum entre deux impulsions
+#define PUMP_MIN_DURATION_MS   500     
+#define PUMP_MAX_DURATION_MS   5000    
+#define PUMP_COOLDOWN_MS       8000   
 
 class Ballast
 {
@@ -18,23 +18,23 @@ public:
     Ballast();
     ~Ballast();
 
-    void begin();                           // à appeler dans setup()
-    void update(float currentDepth);        // à appeler à chaque loop avec la mesure fraîche
+    void begin();                          
+    void update(float currentDepth);     
 
     void setDepthOrder(float targetDepth);
     void setTunings(float Kp, float Ki, float Kd);
 
-    void emergencyStop();                   // arrêt immédiat
+    void emergencyStop();                 
     void start();
 
-    float getOutput() const;                // sortie PID actuelle
+    float getOutput() const;             
     bool isPumpActive() const;
     void emptying(bool startFlag);
 
 private:
-    double _currentDepth;                   // copie locale (double pour le PID)
-    double _targetDepth = 0.0;              // profondeur consigne
-    double _pidOutput   = 0.0;              // sortie PID
+    double _currentDepth;                  
+    double _targetDepth = 0.0;              
+    double _pidOutput   = 0.0;             
 
     PID    _pid;
 

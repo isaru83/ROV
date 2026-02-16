@@ -15,7 +15,7 @@ class SubMarine
 {
     public:
         SubMarine();
-        ~SubMarine();
+        ~SubMarine() {}
         uint8_t begin();
         void run();
         void emergencyStop();

@@ -27,9 +27,7 @@ void Ballast::start()
 
 void Ballast::update(float currentDepth)
 {
-    // Mise à jour de la mesure (conversion float → double)
     _currentDepth = static_cast<double>(currentDepth);
-    // Calcul PID
     _pid.Compute();
 
     uint32_t now = millis();

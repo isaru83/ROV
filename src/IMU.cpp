@@ -77,14 +77,13 @@ bool IMU::update()
 
 float IMU::getTiltCompensatedHeading() const
 {
-    // On a besoin du pitch et roll (depuis rotation vector ou accéléro)
     float pitch = _curAngle.pitch;   // en degrés
     float roll  = _curAngle.roll;
 
     float pitchRad = pitch * PI / 180.0;
     float rollRad  = roll  * PI / 180.0;
 
-    // Projection du champ magnétique dans le plan horizontal
+    // Projection
     float magX_h = _mag.x * cos(pitchRad) + _mag.z * sin(pitchRad);
     float magY_h = _mag.x * sin(rollRad)  * sin(pitchRad) +
                    _mag.y * cos(rollRad)  -
