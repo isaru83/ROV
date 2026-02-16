@@ -42,6 +42,7 @@ class MotionControlUnit
     uint8_t init();
     void setOrder(float yawOrder,float pitchOrder, uint16_t hTrottle, uint16_t vThrottle);
     void setBallastOrder(float ballastOrder);
+    float getDepth() { return _telemetry.depth;}
     MCU_Telemetry *getTelemetry();
     
     void start();

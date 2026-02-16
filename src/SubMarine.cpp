@@ -191,10 +191,10 @@ void SubMarine::enterFailsafe()
 {
     _inFailsafe = true;
     // 1. Vider le ballast complètement
-    _mcu.setBallastOrder(0.0f);           // ou appeler directement emptyBallast() si tu as une fonction
-    // 2. Très léger hThrottle (avance lente)
+    _mcu.setBallastOrder(0.0f);           
+    // 2. Très léger hThrottle (monté lente)
     // 3. Pitch à 0.0 (assiette horizontale)
-    _mcu.setOrder(0.0f, 0.0f, 1620, 1500);   // hThrottle = 1620 (très léger), vThrottle = neutre
+    _mcu.setOrder(0.0f, 0.0f, 1620, 1500);   // hThrottle = 1620 , vThrottle = neutre
 }
 
 void SubMarine::exitFailsafe()
