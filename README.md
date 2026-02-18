@@ -1,62 +1,60 @@
-# SubMarin - ROV d'exploration
+# 🚤 ROV – Remotely Operated Vehicle
 
-Projet personnel de **ROV** (Remotely Operated Vehicle) compact conçu pour l'observation sous-marine lente, la prise de vue et l'exploration de zones restreintes (rochers, épaves, algues, grottes…).
+**ROV (Remotely Operated Vehicle)** est un projet personnel de sous‑marin téléopéré conçu pour l’exploration sous‑marine légère.  
+L’objectif est de créer un engin maniable, stable et silencieux, plutôt orienté observation que vitesse.
 
-L'objectif est d'obtenir un engin **très maniable**, **lent** (0.1–0.8 m/s), stable et silencieux, plutôt qu'un ROV de course.
+---
 
-## Caractéristiques principales
+## 🔍 Description du projet
 
-- **Profondeur max cible** : 10 mètres (boîtier étanche PETG 3D imprimé + plexiglas vissé)
-- **Configuration moteurs** : 4 × ESC 2212 920KV en + (hélices maison Ø60 mm dans tunnels de poussée)
-- **Asservissement** : PID sur pitch, yaw + asservissement profondeur par ballast central
-- **Ballast** : pompe péristaltique + brassard gonflable interne
-- **Capteurs** : IMU BNO08x, pression MS5837, futur capteur Hall sur pompe
-- **Communication** : RS485 demi-duplex (MAX485) avec protocole binaire simple
-- **Contrôle** : station PC/joystick avec commandes throttle, profondeur, assiette
-- **Failsafe** : vidange ballast + faible avance si perte de communication > 1,2 s
-- **Microcontrôleur** : Black Pill STM32F401CC
-- **Langage** : C++ (Arduino framework + PlatformIO)
+Ce ROV est un véhicule sous‑marin télécommandé (Remote Operated Vehicle) construit autour d’un microcontrôleur **Black Pill STM32F401CC** et conçu pour fonctionner jusqu’à ~10 m de profondeur dans un boîtier étanche imprimé en 3D. :contentReference[oaicite:0]{index=0}
 
-## Matériel principal
+Le ROV est capable de :
 
-- Black Pill STM32F401CC
-- 4 × ESC + moteurs 2212 920KV
-- IMU BNO08x
-- Capteur pression MS5837 (BlueRobotics)
-- Pompe péristaltique + driver DRV8871
-- MAX485 pour RS485
-- Boîtier étanche PETG 3D imprimé (170×120×95 mm)
-- Plexiglas vissé pour couvercle
-- Hélices maison Ø60 mm (3 pales, profil S léger)
+- 🚀 propulsion via 4 moteurs brushless + ESC  
+- 📏 asservissement en pitch, yaw et profondeur  
+- 🧠 commandes via joystick / station PC  
+- 🧭 capteurs de navigation (IMU, pression)  
+- 📡 télémétrie en temps réel (attitude, profondeur, température)  
+- 🔄 protocole de communication RS485 demi‑duplex  
+- 🧪 vecteurs de télécommande + tuning PID paramétrable :contentReference[oaicite:1]{index=1}
 
-## Fonctionnalités implémentées
+---
 
-- Asservissement pitch/yaw (PID)
-- Asservissement profondeur (PID sur ballast)
-- Calibration ESC parallèle (4 s au démarrage)
-- Vidange ballast au démarrage (6 s ajustable)
-- Failsafe : vidange + faible poussé vertical si perte de com > 1,2 s
-- Protocole binaire simple (trame type 0x01 pour pilotage complet)
-- Commandes : throttle V/H, depth order, pitch/yaw order, demande télémétrie, tuning PID
-- Télémétrie : pitch/roll/yaw, accel, heading, profondeur, pression, température
+## ⚙️ Caractéristiques techniques
 
-## Protocole de communication (RS485)
+**Matériel principal :**  
+- 🧠 Microcontrôleur : Black Pill STM32F401CC  
+- ⚙️ Propulsion : 4× moteurs brushless + ESC 2212 920KV  
+- 🧭 Capteurs : IMU BNO08x, capteur de pression MS5837  
+- 📡 Communication : RS485 (MAX485)  
+- 💧 Boîtier étanche imprimé en PETG + plexiglas  
+- 🔌 Ballast actif avec pompe péristaltique et driver DRV8871 :contentReference[oaicite:2]{index=2}
 
-- Maître = station PC
-- Trame binaire (start 0xAA + type + id + len + data + CRC16)
-- Commande principale (0x01) : vThrottle (int16), hThrottle (int16), depthOrder (float), pitchOrder (float), yawOrder (float)
-- Télémétrie sur demande (0x02 → 0x80)
-- Tuning PID (get 0x03, set 0x04)
-- Changement densité fluide (0x05)
+---
 
-## Installation / Développement
+## 🧪 Fonctionnalités implémentées
 
-### Prérequis
+- 🔁 Asservissement PID pour pitch, yaw et profondeur  
+- ⚙️ Calibration ESC au démarrage  
+- 📊 Télémétrie (accélération, orientation, profondeur, pression, température)  
+- 📡 Protocole binaire sur RS485 pour commandes et retour  
+- 🛟 Gestion des automatismes failsafe :contentReference[oaicite:3]{index=3}
 
-- PlatformIO (VS Code)
-- STM32 core (dans PlatformIO)
-- Bibliothèques :
-  - Adafruit BNO08x
-  - PID_v1
-  - BlueRobotics MS5837 (GitHub)
+---
 
+## 🛠️ Installation & Développement
+
+### Pré-requis
+
+Avant de commencer, assure‑toi d’avoir :
+
+- 📌 **PlatformIO** avec **VS Code**
+- 📌 Core STM32 pour PlatformIO
+- 📌 Bibliothèques suivantes dans PlatformIO :  
+  - Adafruit BNO08x  
+  - PID_v1  
+  - BlueRobotics MS5837  
+  - (et autres dépendances selon tes sources) :contentReference[oaicite:4]{index=4}
+
+---
